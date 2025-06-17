@@ -1,7 +1,7 @@
-name: essenza_app
+name: veci_app
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
-# pub.dev using `flutter pub publish`. This is preferred for private packages.
+# pub.dev using flutter pub publish. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
@@ -23,22 +23,22 @@ environment:
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
-# consider running `flutter pub upgrade --major-versions`. Alternatively,
+# consider running flutter pub upgrade --major-versions. Alternatively,
 # dependencies can be manually updated by changing the version numbers below to
 # the latest version available on pub.dev. To see which dependencies have newer
-# versions available, run `flutter pub outdated`.
+# versions available, run flutter pub outdated.
 dependencies:
   flutter:
     sdk: flutter
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.8
+  cupertino_icons: ^1.0.8 
   flutter_launcher_icons: "^0.14.3"
   get: ^4.7.2
   firebase_core: ^2.24.2  # Corrected package name
   firebase_auth: ^4.15.3   # Added for authentication
-  cloud_firestore: ^4.13.6 # Added for databas
+  cloud_firestore: ^4.13.6 # Added for database
 
 dev_dependencies:
   flutter_test:
@@ -46,12 +46,29 @@ dev_dependencies:
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml` file located at the root of your
+  # activated in the analysis_options.yaml file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^5.0.0
 
-# For information on the generic Dart part of this file, see the
+#loader launcher id 
+
+flutter_launcher_icons:
+  android: true # ¡CORREGIDO! Debe ser 'true' o 'false', no una ruta de imagen.
+  ios: true
+  image_path: "lib/assets/icons/ic_launcher.png"
+  android_launcher_icon_name: "ic_launcher" # ¡AÑADIDO! Nombre válido para el recurso Android.
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  web:
+    generate: true
+    image_path: "lib/assets/icons/ic_launcher.png"
+    background_color: "#FFFFFF" # Ejemplo de color de fondo (blanco)
+    theme_color: "#000000"     # Ejemplo de color de tema (negro)
+  windows:
+    generate: true
+    image_path: "lib/assets/icons/ic_launcher.png"
+    icon_size: 48 # min:48, max:256, default: 48
+  
 # following page: https://dart.dev/tools/pub/pubspec
 
 # The following section is specific to Flutter packages.
@@ -63,8 +80,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-assets:
- - 
+assets: 
+  - lib/assets/icons/ic_launcher.png
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 
@@ -76,13 +93,13 @@ assets:
 
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
-  # "family" key with the font family name, and a "fonts" key with a
+  # "family" key with the font family family, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
   # fonts:
   #   - family: Schyler
   #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Regular.
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
