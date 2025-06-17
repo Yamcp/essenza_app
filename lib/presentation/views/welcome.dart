@@ -120,7 +120,7 @@ class WelcomeView extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          'Iniciar sesión',
+                          'Inicia sesión',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 18,
