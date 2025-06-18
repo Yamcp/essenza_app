@@ -6,9 +6,9 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _emailController = TextEditingController();
-    final _passwordController = TextEditingController();
-    final _obscurePassword = true.obs;
+    final emailController = TextEditingController();
+    final passwordController = TextEditingController();
+    final obscurePassword = true.obs;
 
     return Scaffold(
       appBar: AppBar(
@@ -55,7 +55,7 @@ class LoginView extends StatelessWidget {
                         children: [
                           // Campo de email
                           TextField(
-                            controller: _emailController,
+                            controller: emailController,
                             keyboardType: TextInputType.emailAddress,
                             decoration: InputDecoration(
                               labelText: 'Correo electrónico',
@@ -71,20 +71,20 @@ class LoginView extends StatelessWidget {
                           
                           // Campo de contraseña
                           Obx(() => TextField(
-                            controller: _passwordController,
-                            obscureText: _obscurePassword.value,
+                            controller: passwordController,
+                            obscureText: obscurePassword.value,
                             decoration: InputDecoration(
                               labelText: 'Contraseña',
                               hintText: 'Ingresa tu contraseña',
                               prefixIcon: const Icon(Icons.lock_outlined),
                               suffixIcon: IconButton(
                                 icon: Icon(
-                                  _obscurePassword.value
+                                  obscurePassword.value
                                       ? Icons.visibility_outlined
                                       : Icons.visibility_off_outlined,
                                 ),
                                 onPressed: () {
-                                  _obscurePassword.toggle();
+                                  obscurePassword.toggle();
                                 },
                               ),
                               border: OutlineInputBorder(
