@@ -4,9 +4,6 @@ import 'package:essenza_app/config/theme/app_theme.dart';
 import 'package:get/get.dart';
 //routes
 import 'presentation/routes/routes.dart';
-//firebase
-import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
 
 void main() {
   runApp(const MyApp());

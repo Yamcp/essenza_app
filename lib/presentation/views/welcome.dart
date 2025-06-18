@@ -146,6 +146,3 @@ class WelcomeView extends StatelessWidget {
     );
   }
 }
-
-
-
