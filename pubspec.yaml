@@ -48,7 +48,11 @@ dependencies:
   firebase_core: ^3.14.0  # Corrected package name
   firebase_auth: ^5.6.0   # Added for authentication
   cloud_firestore: ^5.6.9 # Added for databas
+  firebase_storage: ^12.4.7 # Added for file storage
 
+  #google sign in
+  google_sign_in: ^6.3.0 # Added for Google Sign-In
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

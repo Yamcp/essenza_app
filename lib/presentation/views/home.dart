@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
 
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,12 +29,13 @@ class HomeView extends StatelessWidget {
                     padding: const EdgeInsets.all(20),
                     decoration: BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: BorderRadius.circular(30),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withValues(alpha: (0.1 * 255)),
-                          blurRadius: 10,
-                          offset: const Offset(0, 5),
+                          // Crear un nuevo color con valor alpha
+                        color: Color(0x1A000000), // 0x1A es 10% opaco
+                        blurRadius: 10,
+                        offset: const Offset(0, 5),
                         ),
                       ],
                     ),
@@ -60,9 +62,7 @@ class HomeView extends StatelessWidget {
                     ),
                   ),
                   
-                  const SizedBox(height: 40),
-                  
-                  
+                  const SizedBox(height: 40),                  
                 ],
               ),
             ),
