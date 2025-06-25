@@ -72,9 +72,10 @@ class WelcomeView extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black.withValues(alpha: (0.1 * 255)),
-                          blurRadius: 10,
-                          offset: const Offset(0, 5),
+                          // Crear un nuevo color con valor alpha
+                        color: Color(0x1A000000), // 0x1A es 10% opaco
+                        blurRadius: 10,
+                        offset: const Offset(0, 5),
                         ),
                       ],
                     ),

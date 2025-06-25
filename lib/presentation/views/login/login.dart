@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+//controllers
+import '../../../bloc/controllers/auth_controller.dart';
 
 class LoginView extends StatelessWidget {
-  const LoginView({super.key});
+  LoginView({super.key});
+
+  final AuthController authController = Get.put(AuthController());
 
   @override
   Widget build(BuildContext context) {
-    final emailController = TextEditingController();
-    final passwordController = TextEditingController();
     final obscurePassword = true.obs;
 
     return Scaffold(
@@ -36,13 +38,9 @@ class LoginView extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   // Logo o título
-                  const Icon(
-                    Icons.lock_outline,
-                    size: 80,
-                    color: Colors.white,
-                  ),
+                  const Icon(Icons.lock_outline, size: 80, color: Colors.white),
                   const SizedBox(height: 32),
-                  
+
                   // Card contenedor del formulario
                   Card(
                     elevation: 8,
@@ -55,7 +53,7 @@ class LoginView extends StatelessWidget {
                         children: [
                           // Campo de email
                           TextField(
-                            controller: emailController,
+                            controller: authController.userEmail,
                             keyboardType: TextInputType.emailAddress,
                             decoration: InputDecoration(
                               labelText: 'Correo electrónico',
@@ -68,42 +66,52 @@ class LoginView extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(height: 16),
-                          
+
                           // Campo de contraseña
-                          Obx(() => TextField(
-                            controller: passwordController,
-                            obscureText: obscurePassword.value,
-                            decoration: InputDecoration(
-                              labelText: 'Contraseña',
-                              hintText: 'Ingresa tu contraseña',
-                              prefixIcon: const Icon(Icons.lock_outlined),
-                              suffixIcon: IconButton(
-                                icon: Icon(
-                                  obscurePassword.value
-                                      ? Icons.visibility_outlined
-                                      : Icons.visibility_off_outlined,
+                          Obx(
+                            () => TextField(
+                              controller: authController.userPassword,
+                              obscureText: obscurePassword.value,
+                              decoration: InputDecoration(
+                                labelText: 'Contraseña',
+                                hintText: 'Ingresa tu contraseña',
+                                prefixIcon: const Icon(Icons.lock_outlined),
+                                suffixIcon: IconButton(
+                                  icon: Icon(
+                                    obscurePassword.value
+                                        ? Icons.visibility_outlined
+                                        : Icons.visibility_off_outlined,
+                                  ),
+                                  onPressed: () {
+                                    obscurePassword.toggle();
+                                  },
                                 ),
-                                onPressed: () {
-                                  obscurePassword.toggle();
-                                },
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                                filled: true,
+                                fillColor: Colors.grey[50],
                               ),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(12),
-                              ),
-                              filled: true,
-                              fillColor: Colors.grey[50],
                             ),
-                          )),
+                          ),
                           const SizedBox(height: 8),
-                          
+
                           // Botón de iniciar sesión
                           SizedBox(
                             width: double.infinity,
                             height: 50,
                             child: ElevatedButton(
-                              onPressed: () {
-                                Get.toNamed("/home");
-                                // Acción de login
+                              onPressed: () => {
+                                debugPrint(
+                                  "Email: ${authController.userEmail.text}",
+                                ),
+                                debugPrint(
+                                  "Password: ${authController.userPassword.text}",
+                                ),
+                                authController.loginWithEmailAndPassword(
+                                  authController.userEmail.text,
+                                  authController.userPassword.text,
+                                ),
                               },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: const Color(0xFF9F7AEA),

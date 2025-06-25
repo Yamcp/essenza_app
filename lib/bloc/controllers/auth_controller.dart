@@ -16,7 +16,8 @@ class AuthController extends GetxController {
   //user
   late String uid;
   final Rx<String> userName = ''.obs;
-  final Rx<String> userEmail = ''.obs;
+  final TextEditingController userEmail = TextEditingController();
+  final TextEditingController userPassword = TextEditingController();
   final Rx<String> userProfilePictureUrl = ''.obs;
   final Rx<String> userDni = ''.obs;
   final Rx<String> userPhoneNumber = ''.obs;
@@ -36,9 +37,15 @@ class AuthController extends GetxController {
       if (currentUser != null) {
         uid = currentUser.uid;
         await _loadUserData();
+        authStatus.value = AuthStatus.authenticated;
+        debugPrint("Usuario ya autenticado: ${currentUser.email}");
+      } else {
+        authStatus.value = AuthStatus.unauthenticated;
+        debugPrint("No hay usuario autenticado");
       }
     } catch (e) {
-      debugPrint("Error: ${e.toString()}");
+      authStatus.value = AuthStatus.unauthenticated;
+      debugPrint("Error inicializando autenticación: ${e.toString()}");
     }
   }
 
@@ -49,7 +56,7 @@ class AuthController extends GetxController {
       if (userDoc.exists) {
         final userData = userDoc.data()!;
         userName.value = userData['name'] ?? '';
-        userEmail.value = userData['email'] ?? '';
+        userEmail.text = userData['email'] ?? '';
         userProfilePictureUrl.value = userData['profilePictureUrl'] ?? '';
         userDni.value = userData['dni'] ?? '';
         userPhoneNumber.value = userData['phoneNumber'] ?? '';
@@ -58,6 +65,39 @@ class AuthController extends GetxController {
       }
     } catch (e) {
       debugPrint("Error loading user data: ${e.toString()}");
+    }
+  }
+
+  //email and password
+  Future<void> loginWithEmailAndPassword(String email, String password) async {
+    try {
+      await _firebaseAuth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      uid = _firebaseAuth.currentUser!.uid;
+      await _loadUserData();
+      authStatus.value = AuthStatus.authenticated;
+      debugPrint("Login successful");
+
+      Get.offAllNamed('/home');
+    } catch (e) {
+      authStatus.value = AuthStatus.unauthenticated;
+      debugPrint("Error en login: ${e.toString()}");
+    }
+  }
+
+  //logout
+  Future<void> logout() async {
+    try {
+      await _firebaseAuth.signOut();
+      authStatus.value = AuthStatus.unauthenticated;
+
+
+      debugPrint("Logout successful");
+      Get.offAllNamed('/welcome');
+    } catch (e) {
+      debugPrint("Error en logout: ${e.toString()}");
     }
   }
 }
