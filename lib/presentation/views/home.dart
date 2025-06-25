@@ -3,71 +3,55 @@ import 'package:flutter/material.dart';
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
 
-  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Color(0xFF9F7AEA), // Morado muy claro
-                Color(0xFFF5E6FF), // Rosa muy claro
-              ],
-            ),
-          ),
-          child: SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [                  
-                  // Card simple para el contenido
-                  Container(
-                    padding: const EdgeInsets.all(20),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(30),
-                      boxShadow: [
-                        BoxShadow(
-                          // Crear un nuevo color con valor alpha
-                        color: Color(0x1A000000), // 0x1A es 10% opaco
-                        blurRadius: 10,
-                        offset: const Offset(0, 5),
-                        ),
-                      ],
+        color: Color(0xFFF5E6FF), // Rosa muy claro
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Center(
+              // Cambiado a Center para centrar el contenido dentro del Padding
+              child: Container(
+                padding: const EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(30),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Color(0x1A000000), // 10% opaco
+                      blurRadius: 10,
+                      offset: const Offset(0, 5),
                     ),
-                    child: const Column(
-                      children: [
-                        Text(
-                          'Bienvenida a Essenza!',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 24,
-                            color: Color(0xFF553C9A), // Morado oscuro
-                          ),
-                        ),
-                        SizedBox(height: 15),
-                        Text(
-                          'Tu journal bullet que te acompañará todos los días',
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.black54,
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
+                  ],
+                ),
+                child: const Column(
+                  mainAxisSize: MainAxisSize
+                      .min, // Para que la columna tome sólo el espacio necesario
+                  children: [
+                    Text(
+                      'Bienvenida a Essenza!',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 24,
+                        color: Color(0xFF553C9A), // Morado oscuro
+                      ),
+                      textAlign: TextAlign.center, // Centrar texto
                     ),
-                  ),
-                  
-                  const SizedBox(height: 40),                  
-                ],
+                    SizedBox(height: 15),
+                    Text(
+                      'Tu journal bullet que te acompañará todos los días',
+                      style: TextStyle(fontSize: 16, color: Colors.black54),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
         ),
+      ),
     );
   }
 }

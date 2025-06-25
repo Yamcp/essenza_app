@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Super App',
+      title: 'Essenza App',
       debugShowCheckedModeBanner: false,
       theme: AppTheme(selector: 0).getTheme(),
       getPages: Routes.pages,
