@@ -1,11 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+//controllers
+import '../../../bloc/controllers/auth_controller.dart';
 
 class HomeView extends StatelessWidget {
-  const HomeView({super.key});
+  HomeView({super.key});
+
+  final AuthController authController = Get.put(AuthController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Inicio'),
+        backgroundColor: Color(0xFFB794F6),
+        elevation: 0,
+        foregroundColor: Colors.white,
+      ),
+      drawer: Drawer(
+        backgroundColor: Color(0xFFF5E6FF), // Rosa muy claro
+        child: ListView(
+          children: [                     
+            ListTile(
+              leading: const Icon(Icons.logout),
+              title: const Text('Cerrar sesión'),
+              onTap: () {
+                authController.logout(); // Cierra el drawer
+                // Aquí puedes agregar la lógica para cerrar sesión
+              },
+            ),
+          ],
+        ),
+      ),
       body: Container(
         color: Color(0xFFF5E6FF), // Rosa muy claro
         child: SafeArea(

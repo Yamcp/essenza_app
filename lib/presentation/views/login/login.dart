@@ -15,7 +15,7 @@ class LoginView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Iniciar Sesión'),
-        backgroundColor: Color(0xFFB794F6),
+        backgroundColor: const Color(0xFFB794F6),
         elevation: 0,
         foregroundColor: Colors.white,
       ),
@@ -95,23 +95,40 @@ class LoginView extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(height: 8),
+                          
+                          // Olvidé mi contraseña
+                          Align(
+                            alignment: Alignment.centerRight,
+                            child: TextButton(
+                              onPressed: () {
+                                // Acción para recuperar contraseña
+                                Get.snackbar(
+                                  'Información',
+                                  'Funcionalidad de recuperación de contraseña',
+                                  snackPosition: SnackPosition.BOTTOM,
+                                );
+                              },
+                              child: const Text('¿Olvidaste tu contraseña?'),
+                            ),
+                          ),
+                          const SizedBox(height: 24),
 
                           // Botón de iniciar sesión
                           SizedBox(
                             width: double.infinity,
                             height: 50,
                             child: ElevatedButton(
-                              onPressed: () => {
+                              onPressed: () {
                                 debugPrint(
                                   "Email: ${authController.userEmail.text}",
-                                ),
+                                );
                                 debugPrint(
                                   "Password: ${authController.userPassword.text}",
-                                ),
+                                );
                                 authController.loginWithEmailAndPassword(
                                   authController.userEmail.text,
                                   authController.userPassword.text,
-                                ),
+                                );
                               },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: const Color(0xFF9F7AEA),
@@ -126,6 +143,44 @@ class LoginView extends StatelessWidget {
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+
+                          // Divisor
+                          const SizedBox(height: 16),
+                          const Row(
+                            children: [
+                              Expanded(child: Divider()),
+                              Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 16),
+                                child: Text('O'),
+                              ),
+                              Expanded(child: Divider()),
+                            ],
+                          ),
+                          const SizedBox(height: 16),
+
+                          // Botón de registro
+                          SizedBox(
+                            width: double.infinity,
+                            height: 50,
+                            child: OutlinedButton(
+                              onPressed: () {
+                                Get.toNamed("/createAccount");
+                              },
+                              style: OutlinedButton.styleFrom(
+                                side: const BorderSide(color: Color(0xFF9F7AEA)),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                              ),
+                              child: const Text(
+                                'Crear cuenta nueva',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Color(0xFF9F7AEA),
                                 ),
                               ),
                             ),
