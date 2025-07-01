@@ -95,7 +95,7 @@ class LoginView extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(height: 8),
-                          
+
                           // Olvidé mi contraseña
                           Align(
                             alignment: Alignment.centerRight,
@@ -148,6 +148,26 @@ class LoginView extends StatelessWidget {
                             ),
                           ),
 
+                          // Botón de inicio con Google
+                          const SizedBox(height: 16),
+                          Align(
+                            alignment: Alignment.center,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                padding: const EdgeInsets.all(8),
+                                backgroundColor: Colors.white,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                              ),
+                              onPressed: () {},
+                              child: Image.asset(
+                                "lib/assets/icons/google.png",
+                                height: 40,
+                                width: 40,
+                              ),
+                            ),
+                          ),
                           // Divisor
                           const SizedBox(height: 16),
                           const Row(
@@ -171,7 +191,9 @@ class LoginView extends StatelessWidget {
                                 Get.toNamed("/createAccount");
                               },
                               style: OutlinedButton.styleFrom(
-                                side: const BorderSide(color: Color(0xFF9F7AEA)),
+                                side: const BorderSide(
+                                  color: Color(0xFF9F7AEA),
+                                ),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(12),
                                 ),

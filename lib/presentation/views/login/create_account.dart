@@ -10,7 +10,8 @@ class CreateAccount extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController dniController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confirmPasswordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -19,16 +20,7 @@ class CreateAccount extends StatelessWidget {
         title: const Text('Crear cuenta'),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios),
-          onPressed: () {
-            authController.createAccount(
-              nameController.text,
-              emailController.text,
-              passwordController.text,
-              confirmPasswordController.text,
-              dniController.text,
-              "free",
-            );
-          },
+          onPressed: () => Get.back(),
         ),
       ),
       body: SafeArea(
@@ -98,7 +90,14 @@ class CreateAccount extends StatelessWidget {
               const SizedBox(height: 32),
               ElevatedButton(
                 onPressed: () {
-                  // Aquí irá la lógica de registro
+                  authController.createAccount(
+                    nameController.text,
+                    emailController.text,
+                    passwordController.text,
+                    confirmPasswordController.text,
+                    dniController.text,
+                    "free",
+                  );
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Theme.of(context).primaryColor,

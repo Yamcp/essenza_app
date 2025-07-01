@@ -8,6 +8,7 @@ class UserModel {
   String type;
   List<String> settings;
   DateTime createdAt;
+  bool? isVerified;
 
   UserModel({
     required this.id,
@@ -19,6 +20,7 @@ class UserModel {
     required this.type,
     required this.settings,
     required this.createdAt,
+    this.isVerified,
   });
 
   //factory
@@ -33,6 +35,7 @@ class UserModel {
       type: json['type'] as String,
       settings: List<String>.from(json['settings'] ?? []),
       createdAt: DateTime.parse(json['createdAt']as String),
+      isVerified: json['isVerified'] as bool?,
     );
   }
 }
