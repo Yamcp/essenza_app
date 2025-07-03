@@ -44,6 +44,7 @@ class LoginView extends StatelessWidget {
                   // Card contenedor del formulario
                   Card(
                     elevation: 8,
+                    color: Colors.white,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(16),
                     ),
@@ -74,7 +75,6 @@ class LoginView extends StatelessWidget {
                               obscureText: obscurePassword.value,
                               decoration: InputDecoration(
                                 labelText: 'Contraseña',
-                                hintText: 'Ingresa tu contraseña',
                                 prefixIcon: const Icon(Icons.lock_outlined),
                                 suffixIcon: IconButton(
                                   icon: Icon(
@@ -108,27 +108,47 @@ class LoginView extends StatelessWidget {
                                   snackPosition: SnackPosition.BOTTOM,
                                 );
                               },
-                              child: const Text('¿Olvidaste tu contraseña?'),
+                              child: const Text(
+                                '¿Olvidaste tu contraseña?',
+                                style: TextStyle(
+                                  color: Color(0xFF9F7AEA), // Color del texto
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
                             ),
                           ),
-                          const SizedBox(height: 24),
+                          const SizedBox(width: 24),
 
                           // Botón de iniciar sesión
                           SizedBox(
                             width: double.infinity,
                             height: 50,
                             child: ElevatedButton(
-                              onPressed: () {
-                                debugPrint(
-                                  "Email: ${authController.userEmail.text}",
-                                );
-                                debugPrint(
-                                  "Password: ${authController.userPassword.text}",
-                                );
-                                authController.loginWithEmailAndPassword(
-                                  authController.userEmail.text,
-                                  authController.userPassword.text,
-                                );
+                              onPressed: () async {
+                                try {
+                                  final success = await authController
+                                      .loginWithEmailAndPassword(
+                                        authController.userEmail.text,
+                                        authController.userPassword.text,
+                                      );
+                                  if (!success) {
+                                    Get.snackbar(
+                                      'Error',
+                                      '🚨 Correo o contraseña incorrecta',
+                                      snackPosition: SnackPosition.TOP,
+                                      backgroundColor: Colors.red[100],
+                                      colorText: Colors.red[900],
+                                    );
+                                  }
+                                } catch (e) {
+                                  Get.snackbar(
+                                    'Error',
+                                    '🚨 Correo o contraseña incorrecta',
+                                    snackPosition: SnackPosition.BOTTOM,
+                                    backgroundColor: Colors.red[100],
+                                    colorText: Colors.red[900],
+                                  );
+                                }
                               },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: const Color(0xFF9F7AEA),

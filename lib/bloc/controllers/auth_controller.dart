@@ -69,37 +69,34 @@ class AuthController extends GetxController {
   }
 
   //email and password
-  Future<void> loginWithEmailAndPassword(String email, String password) async {
-    try {
-      //1. verificar si el usuario esta verificado
-      final UserCredential userCredential = await _firebaseAuth
-          .signInWithEmailAndPassword(email: email, password: password);
-      if (userCredential.user?.emailVerified == false) {
-        Get.snackbar(
-          "Error",
-          "El usuario no esta verificado",
-          backgroundColor: Colors.red,
-          colorText: Colors.white,
-        );
-        return;
-      } else {
-        await _firebaseAuth.signInWithEmailAndPassword(
-          email: email,
-          password: password,
-        );
+  Future<bool> loginWithEmailAndPassword(String email, String password) async {
+  try {
+    // 1. verificar si el usuario esta verificado
+    final UserCredential userCredential = await _firebaseAuth
+        .signInWithEmailAndPassword(email: email, password: password);
+    if (userCredential.user?.emailVerified == false) {
+      Get.snackbar(
+        "Error",
+        "El usuario no esta verificado",
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+      );
+      return false;
+    } else {
+      uid = _firebaseAuth.currentUser!.uid;
+      await _loadUserData();
+      authStatus.value = AuthStatus.authenticated;
+      debugPrint("Login successful");
 
-        uid = _firebaseAuth.currentUser!.uid;
-        await _loadUserData();
-        authStatus.value = AuthStatus.authenticated;
-        debugPrint("Login successful");
-
-        Get.offAllNamed('/home');
-      }
-    } catch (e) {
-      authStatus.value = AuthStatus.unauthenticated;
-      debugPrint("Error en login: ${e.toString()}");
+      Get.offAllNamed('/home');
+      return true;
     }
+  } catch (e) {
+    authStatus.value = AuthStatus.unauthenticated;
+    debugPrint("Error en login: ${e.toString()}");
+    return false;
   }
+}
 
   //logout
   Future<void> logout() async {

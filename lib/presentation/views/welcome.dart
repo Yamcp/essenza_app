@@ -110,10 +110,10 @@ class WelcomeView extends StatelessWidget {
                       Get.toNamed("/login");
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFFED64A6), // Rosa del logo
+                      backgroundColor: const Color(0xFF9F7AEA), // Rosa del logo
                       padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(25),
+                        borderRadius: BorderRadius.circular(12),
                       ),
                       elevation: 5,
                     ),
@@ -121,7 +121,7 @@ class WelcomeView extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          'Iniciar sesión',
+                          'Comencemos',
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 18,

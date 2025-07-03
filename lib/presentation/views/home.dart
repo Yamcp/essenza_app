@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:table_calendar/table_calendar.dart'; // Agrega esta línea
 
 //controllers
 import '../../../bloc/controllers/auth_controller.dart';
@@ -19,27 +20,25 @@ class HomeView extends StatelessWidget {
         foregroundColor: Colors.white,
       ),
       drawer: Drawer(
-        backgroundColor: Color(0xFFF5E6FF), // Rosa muy claro
+        backgroundColor: Color(0xFFF5E6FF),
         child: ListView(
-          children: [                     
+          children: [
             ListTile(
               leading: const Icon(Icons.logout),
               title: const Text('Cerrar sesión'),
               onTap: () {
-                authController.logout(); // Cierra el drawer
-                // Aquí puedes agregar la lógica para cerrar sesión
+                authController.logout();
               },
             ),
           ],
         ),
       ),
       body: Container(
-        color: Color(0xFFF5E6FF), // Rosa muy claro
+        color: Color(0xFFF5E6FF),
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(20.0),
             child: Center(
-              // Cambiado a Center para centrar el contenido dentro del Padding
               child: Container(
                 padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
@@ -47,30 +46,34 @@ class HomeView extends StatelessWidget {
                   borderRadius: BorderRadius.circular(30),
                   boxShadow: [
                     BoxShadow(
-                      color: Color(0x1A000000), // 10% opaco
+                      color: Color(0x1A000000),
                       blurRadius: 10,
                       offset: const Offset(0, 5),
                     ),
                   ],
                 ),
-                child: const Column(
-                  mainAxisSize: MainAxisSize
-                      .min, // Para que la columna tome sólo el espacio necesario
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text(
-                      'Bienvenida a Essenza!',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 24,
-                        color: Color(0xFF553C9A), // Morado oscuro
+                    // Calendario
+                    TableCalendar(
+                      firstDay: DateTime.utc(2020, 1, 1),
+                      lastDay: DateTime.utc(2030, 12, 31),
+                      focusedDay: DateTime.now(),
+                      headerStyle: const HeaderStyle(
+                        formatButtonVisible: false,
+                        titleCentered: true,
                       ),
-                      textAlign: TextAlign.center, // Centrar texto
-                    ),
-                    SizedBox(height: 15),
-                    Text(
-                      'Tu journal bullet que te acompañará todos los días',
-                      style: TextStyle(fontSize: 16, color: Colors.black54),
-                      textAlign: TextAlign.center,
+                      calendarStyle: const CalendarStyle(
+                        todayDecoration: BoxDecoration(
+                          color: Color(0xFFB794F6),
+                          shape: BoxShape.circle,
+                        ),
+                        selectedDecoration: BoxDecoration(
+                          color: Color(0xFF553C9A),
+                          shape: BoxShape.circle,
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -78,6 +81,28 @@ class HomeView extends StatelessWidget {
             ),
           ),
         ),
+      ),
+      bottomNavigationBar: NavigationBar(
+        backgroundColor: Color(0xFFB794F6),
+        indicatorColor: Color(0x8F8F8F8F),
+        destinations: const [
+          NavigationDestination(
+            icon: Icon(Icons.home, color: Colors.white),
+            label: 'Inicio',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.book, color: Colors.white),
+            label: 'Journal',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.settings, color: Colors.white),
+            label: 'Ajustes',
+          ),
+        ],
+        selectedIndex: 0,
+        onDestinationSelected: (int index) {
+          // Aquí puedes manejar la navegación entre pantallas
+        },
       ),
     );
   }

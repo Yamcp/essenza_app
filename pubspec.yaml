@@ -53,6 +53,9 @@ dependencies:
   #google sign in
   google_sign_in: ^6.3.0 # Added for Google Sign-In
   
+  #calendario
+  table_calendar: ^3.2.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
