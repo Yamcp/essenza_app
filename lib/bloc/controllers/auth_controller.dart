@@ -201,21 +201,19 @@ class AuthController extends GetxController {
         idToken: googleAuth.idToken,
       );
 
-      //1. verificar en bdd si el usuario existe
-      final userDoc =
-          await FirebaseFirestore.instance.collection("users").doc();
+      //1. Verificar en bdd si el usuario existe
+      final userDoc = await FirebaseFirestore.instance.collection("users").doc();
 
       final userCredential = await _firebaseAuth.signInWithCredential(
         credencial,
       );
 
-      //2. verificar si el usuario esta verificado
-
+      //2. Verificar si el usuario esta verificado
       if (userCredential.user?.emailVerified == false) {
         Get.snackbar("Error", "El usuario no esta verificado");
       }
 
-      //3. crear usuario en bdd
+      //3. Crear usuario en bdd
       await FirebaseFirestore.instance.collection("users").doc(uid).set({
         "name": userCredential.user?.displayName ?? "",
         "email": userCredential.user?.email ?? "",

@@ -180,7 +180,9 @@ class LoginView extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(12),
                                 ),
                               ),
-                              onPressed: () {},
+                              onPressed: () {
+                                authController.signInWithGoogle();
+                              },
                               child: Image.asset(
                                 "lib/assets/icons/google.png",
                                 height: 40,
