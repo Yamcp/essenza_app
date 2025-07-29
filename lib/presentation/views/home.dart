@@ -24,6 +24,14 @@ class HomeView extends StatelessWidget {
         child: ListView(
           children: [
             ListTile(
+              leading: const Icon(Icons.people),
+              title: const Text('Perfil'),
+              onTap: () {
+                Get.toNamed("/profile");
+              },
+            ),
+            const Divider(),
+            ListTile(
               leading: const Icon(Icons.logout),
               title: const Text('Cerrar sesión'),
               onTap: () {
