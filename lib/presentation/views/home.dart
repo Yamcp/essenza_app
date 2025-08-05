@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:table_calendar/table_calendar.dart'; // Agrega esta línea
+import 'package:table_calendar/table_calendar.dart';
 
 //controllers
 import '../../../bloc/controllers/auth_controller.dart';
