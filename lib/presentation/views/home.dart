@@ -5,6 +5,9 @@ import 'package:table_calendar/table_calendar.dart';
 //controllers
 import '../../../bloc/controllers/auth_controller.dart';
 
+//views
+import 'quote/daily_phrase_view.dart';
+
 class HomeView extends StatelessWidget {
   HomeView({super.key});
 
@@ -99,6 +102,11 @@ class HomeView extends StatelessWidget {
             label: 'Inicio',
           ),
           NavigationDestination(
+            icon: Icon(Icons.bookmark, color: Colors.white),
+            label: 'Frases',
+
+          ),
+          NavigationDestination(
             icon: Icon(Icons.book, color: Colors.white),
             label: 'Journal',
           ),
@@ -109,7 +117,9 @@ class HomeView extends StatelessWidget {
         ],
         selectedIndex: 0,
         onDestinationSelected: (int index) {
-          // Aquí puedes manejar la navegación entre pantallas
+          if (index == 1) { // El índice 1 corresponde a "Frases"
+            Get.to(() => DailyPhraseView());
+          }
         },
       ),
     );

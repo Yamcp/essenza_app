@@ -55,7 +55,7 @@ class UserModel {
       direccion: json['direccion'] as String? ?? '',
       type: json['type'] as String,
       settings: List<String>.from(json['settings'] ?? []),
-      createdAt: DateTime.parse(json['createdAt']as String),
+      createdAt: DateTime.parse(json['createdAt'] as String),
       isVerified: json['isVerified'] as bool?,
     );
   }
