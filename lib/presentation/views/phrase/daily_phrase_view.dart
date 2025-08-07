@@ -12,7 +12,7 @@ class DailyPhraseView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Frase del Día'),
-        backgroundColor: Color(0xFFB794F6),
+        backgroundColor: Color(0xFF9F7A7A),
         elevation: 0,
         foregroundColor: Colors.white,
       ),
@@ -22,8 +22,8 @@ class DailyPhraseView extends StatelessWidget {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Color(0xFF9F7AEA), // Morado muy claro
-              Color(0xFFF5E6FF), // Rosa muy claro
+              Color(0xFFEBDBD2),
+              Color(0xFFF0E9E4),
             ],
           ),
         ),
@@ -57,6 +57,28 @@ class DailyPhraseView extends StatelessWidget {
             );
           }),
         ),
+      ),
+      bottomNavigationBar: NavigationBar(
+        backgroundColor: Color(0xFF9F7A7A),
+        indicatorColor: Color(0xFFE5DFD9),
+        destinations: const [
+          NavigationDestination(
+            icon: Icon(Icons.home, color: Color(0xFF1E1F21)),
+            label: 'Inicio',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.bookmark, color: Color(0xFF1E1F21)),
+            label: 'Frases',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.book, color: Color(0xFF1E1F21)),
+            label: 'Journal',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.settings, color: Color(0xFF1E1F21)),
+            label: 'Ajustes',
+          ),
+        ],
       ),
     );
   }

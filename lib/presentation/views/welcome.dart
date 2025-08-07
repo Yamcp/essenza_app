@@ -13,8 +13,8 @@ class WelcomeView extends StatelessWidget {
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
-                Color(0xFF9F7AEA), // Morado muy claro
-                Color(0xFFF5E6FF), // Rosa muy claro
+                Color(0xFFF3ECE7),
+                Color(0xFFFEFFFF), 
               ],
             ),
           ),
@@ -57,7 +57,7 @@ class WelcomeView extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 32,
                       fontWeight: FontWeight.bold,
-                      color: Color(0xFF553C9A), // Morado oscuro
+                      color: Color(0xFF1E1F21), // Morado oscuro
                       letterSpacing: 2,
                     ),
                   ),
@@ -86,7 +86,7 @@ class WelcomeView extends StatelessWidget {
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 24,
-                            color: Color(0xFF553C9A), // Morado oscuro
+                            color: Color(0xFF1E1F21), // Morado oscuro
                           ),
                         ),
                         SizedBox(height: 15),
@@ -110,7 +110,7 @@ class WelcomeView extends StatelessWidget {
                       Get.toNamed("/login");
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF9F7AEA), // Rosa del logo
+                      backgroundColor: const Color(0xFF9F7A7A),
                       padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(12),

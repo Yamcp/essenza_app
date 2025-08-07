@@ -45,7 +45,7 @@ class _ProfileViewState extends State<ProfileView> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Perfil'),
-        backgroundColor: Color(0xFFB794F6),
+        backgroundColor: Color(0xFF9F7A7A),
         elevation: 0,
         foregroundColor: Colors.white,
       ),
@@ -55,8 +55,8 @@ class _ProfileViewState extends State<ProfileView> {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Color(0xFF9F7AEA), // Morado muy claro
-              Color(0xFFF5E6FF), // Rosa muy claro
+              Color(0xFFEBDBD2), 
+              Color(0xFFF0E9E4), 
             ],
           ),
         ),

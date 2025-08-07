@@ -3,12 +3,10 @@ import 'package:flutter/material.dart';
 const costumColor = Color(0xFF9F7AEA); // Morado  principal
 
 const List<Color> colorList = [
-  Color(0xFFED64A6), // Rosa principal
-  Color(0xFFB794F6), // Morado claro
-  Color(0xFFF093FB), // Rosa claro
-  Color(0xFFF5E6FF),    // Fondo rosa muy claro
-  Color(0xFFE8D5F7), // Fondo lavanda
-
+  Color(0xFFF3ECE7), // 1 tono en degradado
+  Color(0xFFFEFFFF), // Fondo neutro y 2do tono en degradado
+  Color(0xFF9F7A7A), // Color de las partes principales
+  Color(0xFF1E1F21), // Color de texto principal
 ];
 
 class AppTheme {

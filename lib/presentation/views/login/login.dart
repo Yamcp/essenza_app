@@ -15,7 +15,7 @@ class LoginView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Iniciar Sesión'),
-        backgroundColor: const Color(0xFFB794F6),
+        backgroundColor: const Color(0xFF9F7A7A),
         elevation: 0,
         foregroundColor: Colors.white,
       ),
@@ -25,8 +25,8 @@ class LoginView extends StatelessWidget {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Color(0xFF9F7AEA), // Morado muy claro
-              Color(0xFFF5E6FF), // Rosa muy claro
+              Color(0xFFF3ECE7), // Morado muy claro
+              Color(0xFFFEFFFF), // Rosa muy claro
             ],
           ),
         ),
@@ -111,7 +111,7 @@ class LoginView extends StatelessWidget {
                               child: const Text(
                                 '¿Olvidaste tu contraseña?',
                                 style: TextStyle(
-                                  color: Color(0xFF9F7AEA), // Color del texto
+                                  color: Color(0xFF1E1F21), // Color del texto
                                   fontWeight: FontWeight.bold,
                                 ),
                               ),
@@ -151,7 +151,7 @@ class LoginView extends StatelessWidget {
                                 }
                               },
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: const Color(0xFF9F7AEA),
+                                backgroundColor: const Color(0xFF9F7A7A),
                                 foregroundColor: Colors.white,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(12),
@@ -214,7 +214,7 @@ class LoginView extends StatelessWidget {
                               },
                               style: OutlinedButton.styleFrom(
                                 side: const BorderSide(
-                                  color: Color(0xFF9F7AEA),
+                                  color: Color(0xFF9F7A7A),
                                 ),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(12),
@@ -224,7 +224,7 @@ class LoginView extends StatelessWidget {
                                 'Crear cuenta nueva',
                                 style: TextStyle(
                                   fontSize: 16,
-                                  color: Color(0xFF9F7AEA),
+                                  color: Color(0xFF1E1F21),
                                 ),
                               ),
                             ),

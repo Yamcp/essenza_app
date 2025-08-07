@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:essenza_app/config/theme/app_theme.dart';
-//getx
+// getx
 import 'package:get/get.dart';
-//routes
+// routes
 import 'presentation/routes/routes.dart';
-//firebase
+// firebase
 import 'package:firebase_core/firebase_core.dart';
-//controllers
+// controllers
 import 'bloc/controllers/auth_controller.dart';
+// localizations
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,6 +27,17 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: AppTheme(selector: 0).getTheme(),
       getPages: Routes.pages,
+      // === LOCALIZATION CONFIG ===
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('es', 'ES'), // Español España (puedes cambiar región según tu preferencia)
+      ],
+      locale: const Locale('es', 'ES'), // Fuerza la app en español
+      // ===========================
       home: const AuthenticationWrapper(),
     );
   }
